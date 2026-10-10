@@ -60,3 +60,14 @@ Keep passwords, email credentials, connection strings containing secrets, and ot
 ## Author
 
 Developed as a full-stack software engineering project.
+
+## Application Screenshots
+
+### Login Page
+![Employee Management System Login](screenshot/Login%20page.png)
+
+### Admin Dashboard
+![Admin Dashboard](screenshot/Admin%20dashboard%20with%20statistics%20and%20absent%20summary.png)
+
+### Leave Management and Notifications
+![Leave Management](screenshot/Leave%20management%20with%20AcceptReject%20actions%20and%20notifications.png)
