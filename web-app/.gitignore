@@ -1,0 +1,35 @@
+# Visual Studio
+.vs/
+*.user
+*.suo
+
+# .NET build files
+**/bin/
+**/obj/
+
+# Angular dependencies and builds
+**/node_modules/
+**/dist/
+**/.angular/
+
+# Local secrets and environment files
+.env
+.env.*
+**/appsettings.Development.json
+/EmployeeManagementSystem/appsettings.json
+
+# Database files and backups
+*.mdf
+*.ldf
+*.bak
+*.sqlite
+*.db
+
+# Logs and temporary files
+*.log
+.DS_Store
+Thumbs.db
+
+# Local secrets
+/EmployeeManagementSystem/appsettings.json
+/EmployeeManagementSystem/appsettings.Development.json

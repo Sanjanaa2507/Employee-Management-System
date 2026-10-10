@@ -1,0 +1,88 @@
+/* ===================== 3D SUMMARY CARDS ===================== */
+
+.summary-3d {
+  perspective: 1200px;
+}
+
+.summary-card {
+  padding: 2rem;
+  border-radius: 20px;
+
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  box-shadow:
+    0 20px 35px rgba(0, 0, 0, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+
+  transform-style: preserve-3d;
+  transition: all 0.35s ease;
+  cursor: pointer;
+}
+
+.summary-card:hover {
+  transform: translateY(-12px) rotateX(6deg);
+  box-shadow: 0 35px 60px rgba(0, 0, 0, 0.18);
+}
+
+/* TEXT STYLES */
+.summary-card h1 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+.summary-card h2 {
+  font-size: 2.6rem;
+  font-weight: 700;
+}
+
+/* ================= COLOR VARIANTS ================= */
+
+.summary-card.green {
+  background: linear-gradient(
+    135deg,
+    rgba(187, 247, 208, 0.75),
+    rgba(134, 239, 172, 0.9)
+  );
+}
+
+.summary-card.purple {
+  background: linear-gradient(
+    135deg,
+    rgba(233, 213, 255, 0.75),
+    rgba(216, 180, 254, 0.9)
+  );
+}
+
+.summary-card.red {
+  background: linear-gradient(
+    135deg,
+    rgba(254, 202, 202, 0.75),
+    rgba(252, 165, 165, 0.9)
+  );
+}
+/* ===================== TABLE INTERACTIONS ===================== */
+
+table tbody tr {
+  transition: all 0.25s ease;
+}
+
+table tbody tr:hover {
+  background: rgba(0, 0, 0, 0.04);
+  transform: scale(1.01);
+}
+/* ===================== FILTER FIELDS ===================== */
+
+mat-form-field {
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+  transition: transform 0.25s ease;
+}
+
+mat-form-field:hover {
+  transform: translateY(-3px);
+}

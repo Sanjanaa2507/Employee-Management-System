@@ -1,0 +1,21 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs/
+/bin/
+/obj/
+/EmployeeManagementSystem/bin/
+/EmployeeManagementSystem/obj/
+
+# Private backend configuration
+/EmployeeManagementSystem/appsettings.json
+/EmployeeManagementSystem/appsettings.Development.json
+
+# Frontend dependencies and generated files
+/web-app/node_modules/
+/web-app/dist/
+/web-app/.angular/
+
+# Local Visual Studio user settings
+/EmployeeManagementSystem/EmployeeManagementSystem.csproj.user

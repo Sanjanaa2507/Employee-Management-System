@@ -1,0 +1,154 @@
+<div class="p-8">
+
+  <!-- ================= SUMMARY CARDS (3D) ================= -->
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 summary-3d">
+
+    <!-- TOTAL SALARY -->
+    <mat-card class="summary-card green">
+      <h1>Total Salary for this month</h1>
+      <h2>{{ salaryForMonth }}</h2>
+    </mat-card>
+
+    <!-- TOTAL EMPLOYEES -->
+    <mat-card class="summary-card purple">
+      <h1>Total Employee Count</h1>
+      <h2>{{ employeeCount }}</h2>
+    </mat-card>
+
+    <!-- TOTAL DEPARTMENTS -->
+    <mat-card class="summary-card red">
+      <h1>Total Department Count</h1>
+      <h2>{{ departmentCount }}</h2>
+    </mat-card>
+
+  </div>
+
+  <!-- ================= EMPLOYEE ON LEAVE ================= -->
+  <div class="mt-8">
+    <mat-card class="p-4 glass-card">
+      <h1 class="text-xl font-semibold">Employee On Leave Today</h1>
+
+      @if (leaveData) {
+        <app-table
+          [showPage]="false"
+          [pagedData]="leaveData"
+          [displayedColumns]="leaveCols">
+        </app-table>
+      }
+    </mat-card>
+  </div>
+
+  <!-- ================= MONTH / YEAR FILTER ================= -->
+  <div class="mt-6 flex gap-6 items-center">
+
+    <!-- MONTH -->
+    <mat-form-field appearance="fill" class="w-48">
+      <mat-label>Month</mat-label>
+      <mat-select
+        [(ngModel)]="currentMonth"
+        (selectionChange)="loadAbsentSummary()">
+        <mat-option [value]="1">January</mat-option>
+        <mat-option [value]="2">February</mat-option>
+        <mat-option [value]="3">March</mat-option>
+        <mat-option [value]="4">April</mat-option>
+        <mat-option [value]="5">May</mat-option>
+        <mat-option [value]="6">June</mat-option>
+        <mat-option [value]="7">July</mat-option>
+        <mat-option [value]="8">August</mat-option>
+        <mat-option [value]="9">September</mat-option>
+        <mat-option [value]="10">October</mat-option>
+        <mat-option [value]="11">November</mat-option>
+        <mat-option [value]="12">December</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <!-- YEAR -->
+    <mat-form-field appearance="fill" class="w-32">
+      <mat-label>Year</mat-label>
+      <mat-select
+        [(ngModel)]="currentYear"
+        (selectionChange)="loadAbsentSummary()">
+        <mat-option [value]="2024">2024</mat-option>
+        <mat-option [value]="2025">2025</mat-option>
+        <mat-option [value]="2026">2026</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+  </div>
+
+  <!-- ================= ABSENT SUMMARY TABLE ================= -->
+  <div class="mt-8">
+    <mat-card class="p-4 glass-card">
+      <h1 class="text-xl font-semibold mb-4">
+        Employee Absent Summary
+      </h1>
+
+      <table class="w-full border-collapse">
+        <thead>
+          <tr class="border-b">
+            <th class="text-left p-2">Employee Name</th>
+            <th class="text-left p-2">Absent Days</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          @for (item of absentSummary; track item.employeeName) {
+            <tr class="border-b hover:bg-gray-100">
+              <td class="p-2">{{ item.employeeName }}</td>
+              <td class="p-2 text-red-600 font-semibold">
+                {{ item.absentDays }}
+              </td>
+            </tr>
+          }
+
+          @if (absentSummary.length === 0) {
+            <tr>
+              <td colspan="2" class="p-4 text-center text-gray-500">
+                No absent data found for selected month
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </mat-card>
+  </div>
+
+  <!-- ================= ABSENT SUMMARY CHART ================= -->
+  <div class="mt-8">
+    <mat-card class="p-4 glass-card">
+      <h1 class="text-xl font-semibold mb-4">
+        Employee Absent Summary Chart
+      </h1>
+
+      <div style="height: 350px;">
+        <canvas
+          baseChart
+          [data]="absentChartData"
+          [options]="absentChartOptions"
+          [type]="'bar'">
+        </canvas>
+      </div>
+    </mat-card>
+  </div>
+
+  <!-- ================= DEPARTMENT CHART ================= -->
+  <div class="mt-8 w-8/12">
+    <mat-card class="p-4 glass-card">
+      <h1 class="text-xl font-semibold">
+        Department Wise Employee Data
+      </h1>
+
+      @if (departmentData) {
+        <canvas
+          baseChart
+          [data]="barChartData"
+          [options]="barChartOptions"
+          [plugins]="barChartPlugins"
+          [legend]="barChartLegend"
+          [type]="'bar'">
+        </canvas>
+      }
+    </mat-card>
+  </div>
+
+</div>

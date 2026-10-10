@@ -1,0 +1,19 @@
+<div class="p-8">
+  <div class="flex justify-between mb-2 items-center">
+    <h1 class="text-xl font-semibold">Employee List</h1>
+    <mat-form-field class="w-4/12">
+      <mat-label>Search</mat-label>
+      <input type="text" matInput [formControl]="searchControl" />
+    </mat-form-field>
+    <button mat-flat-button class="bg-green-500!" (click)="add()">Add</button>
+  </div>
+  <app-table
+    [pagedData]="pagedEmployeeData"
+    [pageIndex]="filter.pageIndex"
+    [pageSize]="filter.pageSize"
+    [displayedColumns]="showCols"
+    (rowClick)="onRowClick($event)"
+    (onPageChange)="pageChange($event)"
+  ></app-table>
+  
+</div>

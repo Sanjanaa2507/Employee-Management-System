@@ -1,0 +1,118 @@
+/* =========================================================
+   FULL PAGE BACKGROUND (SOFT 3D GRADIENT)
+   ========================================================= */
+
+.login-container {
+  min-height: 100vh;
+
+  /* 🌈 Soft professional gradient */
+  background:
+    radial-gradient(
+      circle at top left,
+      #e0e7ff,
+      transparent 60%
+    ),
+    radial-gradient(
+      circle at bottom right,
+      #bae6fd,
+      transparent 55%
+    ),
+    linear-gradient(
+      135deg,
+      #f8fafc,
+      #eef2ff
+    );
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+/* =========================================================
+   GLASS LOGIN CARD
+   ========================================================= */
+
+.login-glass-card {
+  width: 420px;
+  max-width: 95%;
+  padding: 40px 36px;
+  border-radius: 24px;
+
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  box-shadow:
+    0 30px 70px rgba(0, 0, 0, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+
+  text-align: center;
+}
+
+/* =========================================================
+   TEXT
+   ========================================================= */
+
+.title {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: #1f2937;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: #6b7280;
+  margin-bottom: 30px;
+}
+
+/* =========================================================
+   FORM
+   ========================================================= */
+
+.full-width {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+/* =========================================================
+   LOGIN BUTTON
+   ========================================================= */
+
+.login-btn {
+  width: 100%;
+  height: 48px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 14px;
+
+  background: linear-gradient(
+    135deg,
+    #3b82f6,
+    #6366f1
+  ) !important;
+
+  color: white !important;
+
+  box-shadow:
+    0 12px 30px rgba(59, 130, 246, 0.45);
+
+  transition: all 0.25s ease;
+}
+
+.login-btn:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 18px 40px rgba(59, 130, 246, 0.6);
+}
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.footer-text {
+  margin-top: 22px;
+  font-size: 12px;
+  color: #9ca3af;
+}

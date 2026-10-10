@@ -1,0 +1,181 @@
+<!-- ================= TOP BAR ================= -->
+<header>
+  <mat-toolbar class="topbar-modern">
+
+    <!-- LEFT -->
+    <div class="topbar-left">
+      <button
+        mat-icon-button
+        class="menu-btn"
+        (click)="drawer.toggle()"
+      >
+        <mat-icon>menu</mat-icon>
+      </button>
+
+      <span class="app-title">
+        Employee Management System
+      </span>
+    </div>
+
+    <!-- RIGHT -->
+    @if (authService.isLoggedIn) {
+      <div class="topbar-right">
+
+        <!-- 🔔 NOTIFICATION -->
+        <div class="notification-wrapper">
+
+          <button
+            mat-icon-button
+            class="bell-btn"
+            (click)="onBellClick()"
+          >
+            <mat-icon>notifications</mat-icon>
+
+            @if (unreadCount > 0) {
+              <span class="badge">
+                {{ unreadCount }}
+              </span>
+            }
+          </button>
+
+          <!-- 🔽 DROPDOWN PANEL -->
+          @if (showNotifications) {
+            <div class="notification-dropdown">
+
+              @if (notifications.length === 0) {
+                <div class="notification-empty">
+                  No new notifications
+                </div>
+              }
+
+              @for (n of notifications; track n.id) {
+                <div
+                  class="notification-item"
+                  (click)="markAsRead(n)"
+                >
+                  {{ n.message }}
+                </div>
+              }
+
+            </div>
+          }
+
+        </div>
+
+        <!-- USER EMAIL -->
+        <span
+          class="user-email"
+          routerLink="/profile"
+        >
+          {{ authService.authDetail?.email }}
+        </span>
+
+        <!-- LOGOUT -->
+        <button
+          mat-icon-button
+          class="logout-btn"
+          (click)="logout()"
+        >
+          <mat-icon>logout</mat-icon>
+        </button>
+
+      </div>
+    }
+
+  </mat-toolbar>
+</header>
+
+<!-- ================= LAYOUT ================= -->
+<mat-drawer-container class="layout">
+
+  <!-- ================= SIDEBAR ================= -->
+  <mat-drawer
+    #drawer
+    class="sidebar"
+    [mode]="'side'"
+    [opened]="authService.isLoggedIn"
+  >
+
+    <nav class="menu">
+
+      @if (authService.isEmployee) {
+
+        <a
+          routerLink="/employee-dashboard"
+          routerLinkActive="active"
+        >
+          <mat-icon>dashboard</mat-icon>
+          <span>Employee Dashboard</span>
+        </a>
+
+        <a
+          routerLink="/leaves"
+          routerLinkActive="active"
+        >
+          <mat-icon>event_busy</mat-icon>
+          <span>Leaves</span>
+        </a>
+
+        <a
+          routerLink="/attendace"
+          routerLinkActive="active"
+        >
+          <mat-icon>insights</mat-icon>
+          <span>Attendance History</span>
+        </a>
+
+      } @else {
+
+        <a
+          routerLink="/"
+          routerLinkActive="active"
+        >
+          <mat-icon>dashboard</mat-icon>
+          <span>Dashboard</span>
+        </a>
+
+        <a
+          routerLink="/departments"
+          routerLinkActive="active"
+        >
+          <mat-icon>apartment</mat-icon>
+          <span>Departments</span>
+        </a>
+
+        <a
+          routerLink="/employee"
+          routerLinkActive="active"
+        >
+          <mat-icon>groups</mat-icon>
+          <span>Employee List</span>
+        </a>
+
+        <a
+          routerLink="/leaves"
+          routerLinkActive="active"
+        >
+          <mat-icon>event_busy</mat-icon>
+          <span>Leaves</span>
+        </a>
+        <a
+  routerLink="/admin-map"
+  routerLinkActive="active"
+>
+  <mat-icon>map</mat-icon>
+  <span>GeoFence Map</span>
+</a>
+
+
+      }
+
+    </nav>
+  </mat-drawer>
+
+  <!-- ================= CONTENT ================= -->
+  <mat-drawer-content>
+    <main class="content">
+      <router-outlet></router-outlet>
+    </main>
+  </mat-drawer-content>
+
+</mat-drawer-container>

@@ -1,0 +1,61 @@
+<div class="login-container">
+
+  <div class="login-glass-card">
+
+    <h1 class="title">Welcome Back 👋</h1>
+    <p class="subtitle">
+      Login to access your Employee Management System
+    </p>
+
+    <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+
+      <!-- EMAIL -->
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-icon matPrefix>email</mat-icon>
+        <input
+          matInput
+          placeholder="Email"
+          formControlName="email"
+        />
+      </mat-form-field>
+
+      <!-- PASSWORD WITH EYE -->
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-icon matPrefix>lock</mat-icon>
+
+        <input
+          matInput
+          [type]="hidePassword ? 'password' : 'text'"
+          placeholder="Password"
+          formControlName="password"
+        />
+
+        <button
+          mat-icon-button
+          matSuffix
+          type="button"
+          (click)="hidePassword = !hidePassword"
+        >
+          <mat-icon>
+            {{ hidePassword ? 'visibility_off' : 'visibility' }}
+          </mat-icon>
+        </button>
+      </mat-form-field>
+
+      <!-- LOGIN BUTTON -->
+      <button
+        mat-raised-button
+        class="login-btn"
+        [disabled]="loginForm.invalid"
+      >
+        Login
+      </button>
+
+      <p class="footer-text">
+        © 2025 Employee Management System
+      </p>
+
+    </form>
+
+  </div>
+</div>
