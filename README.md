@@ -66,6 +66,8 @@ Developed as a full-stack software engineering project.
 ### Login Page
 ![Employee Management System Login](screenshot/Login%20page.png)
 
+Frontend deployment configuration updated.
+
 ### Admin Dashboard
 ![Admin Dashboard](screenshot/Admin%20dashboard%20with%20statistics%20and%20absent%20summary.png)
 
